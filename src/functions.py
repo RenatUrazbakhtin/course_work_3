@@ -84,3 +84,21 @@ def formatted_date(date):
     formatted_date = given_date.split("-")
     formatted_date = formatted_date[2] + "." + formatted_date[1] + "." + formatted_date[0]
     return formatted_date
+
+def sorted_operation(data: list[dict]) -> list[dict]:
+    """
+    сортирует список словарей по дате
+    :param data:
+    :return: последние 5 операций
+    """
+    new_list = []
+    last_operations = []
+    for item in data:
+        if "date" in item:
+            new_list.append(item["date"])
+    sorted_dates = sorted(new_list, reverse=True)
+    for date in sorted_dates[:5]:
+        for item in data:
+            if "date" in item and item["date"] == date:
+                last_operations.append(item)
+    return last_operations
