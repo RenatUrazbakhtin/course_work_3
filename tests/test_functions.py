@@ -52,3 +52,7 @@ def test_program_output():
   """
   assert program_output({'id': 863064926, 'state': 'EXECUTED', 'date': '2019-12-08T22:46:21.935582', 'operationAmount': {'amount': '41096.24', 'currency': {'name': 'USD', 'code': 'USD'}}, 'description': 'Открытие вклада', 'to': 'Счет 90424923579946435907'}) == "08.12.2019 Открытие вклада\nUnknown -> Счет **5907\n41096.24 USD"
   assert program_output({'id': 114832369, 'state': 'EXECUTED', 'date': '2019-12-07T06:17:14.634890', 'operationAmount': {'amount': '48150.39', 'currency': {'name': 'USD', 'code': 'USD'}}, 'description': 'Перевод организации', 'from': 'Visa Classic 2842878893689012', 'to': 'Счет 35158586384610753655'}) == "07.12.2019 Перевод организации\nVisa Classic 2842 87** **** 9012 -> Счет **3655\n48150.39 USD"
+
+def test_main():
+  with pytest.raises(FileNotFoundError):
+    read_json("../fake_operations.json")
