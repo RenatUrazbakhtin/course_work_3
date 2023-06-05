@@ -102,3 +102,17 @@ def sorted_operation(data: list[dict]) -> list[dict]:
             if "date" in item and item["date"] == date:
                 last_operations.append(item)
     return last_operations
+
+def program_output(data):
+    """
+    собирает конечное сообщение по операции
+    :param data:
+    :return: конечное сообщение по операции
+    """
+    first_line = formatted_date(data["date"]) + " " + data["description"]
+    if "from" in data.keys():
+        second_line = mask_from(data["from"]) + " -> " + mask_to(data["to"])
+    else:
+        second_line = "Unknown" + " -> " + mask_to(data["to"])
+    third_line = data["operationAmount"]["amount"] + " " + data["operationAmount"]["currency"]["name"]
+    return '\n'.join([first_line, second_line, third_line])
