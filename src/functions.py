@@ -49,3 +49,27 @@ def mask_from(input_from_account: str):
         else:
             return "Cannot identify account from"
         return from_account_split[0] + " " + from_account_split[1] + str
+
+def mask_to(input_to_account):
+    """
+    форматирует строку в формат: ** с 4 последними цифрами карты
+    :param input_to_account:
+    :return: форматированную строку
+    """
+    to_account_split = input_to_account.split(" ")
+    if len(to_account_split) == 2:
+        if len(to_account_split[-1]) == 16:
+            str = ' **' + to_account_split[-1][12:16]
+        elif len(to_account_split[-1]) == 20:
+            str = ' **' + to_account_split[-1][16:20]
+        else:
+            return "Cannot identify account to"
+        return to_account_split[0] + str
+    if len(to_account_split) == 3:
+        if len(to_account_split[-1]) == 16:
+            str = ' **' + to_account_split[-1][12:16]
+        elif len(to_account_split[-1]) == 20:
+            str = ' **' + to_account_split[-1][16:20]
+        else:
+            return "Cannot identify account to"
+        return to_account_split[0] + " " + to_account_split[1] + str

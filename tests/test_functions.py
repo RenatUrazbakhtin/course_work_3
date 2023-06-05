@@ -1,5 +1,5 @@
 import pytest
-from src.functions import read_json, check_executed, mask_from
+from src.functions import read_json, check_executed, mask_from, mask_to
 def test_read_json(data):
   """
   тест для функции чтения файла из json
@@ -24,3 +24,13 @@ def test_mask_from():
   assert mask_from("МИР 4878656375033856") == "МИР 4878 65** **** 3856"
   assert mask_from("Visa Platinum 8990850370884895") == "Visa Platinum 8990 85** **** 4895"
   assert mask_from("Visa Gold 3654412434951162") == "Visa Gold 3654 41** **** 1162"
+
+def test_mask_to():
+  """
+  тест для проверки функции mask_to
+  :return:
+  """
+  assert mask_to("Счет 59986621134048778289") == "Счет **8289"
+  assert mask_to("Счет 49304996510329747621") == "Счет **7621"
+  assert mask_to("MasterCard 6783917276771847") == "MasterCard **1847"
+  assert mask_to("Visa Gold 9447344650495960") == "Visa Gold **5960"
