@@ -73,3 +73,14 @@ def mask_to(input_to_account):
         else:
             return "Cannot identify account to"
         return to_account_split[0] + " " + to_account_split[1] + str
+
+def formatted_date(date):
+    """
+    преобразует дату в формат число.месяц.год
+    :param date:
+    :return: преобразованную дату
+    """
+    given_date = date[:10]
+    formatted_date = given_date.split("-")
+    formatted_date = formatted_date[2] + "." + formatted_date[1] + "." + formatted_date[0]
+    return formatted_date
